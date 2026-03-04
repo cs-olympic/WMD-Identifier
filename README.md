@@ -15,9 +15,9 @@ Configuration, installation, and execution instructions:
 Download both the LearnMore.txt and Main.py files from this repository. Next open python and open the Main.py file. Make sure that LearnMore.txt and Mail.py are in the same folder. Run the program and decide on if you want to learn more about WMDs or if you want to go through the questionnaire to see if you are a potential victim of a WMD.
 
 Table of files including:
-Main.py:
+Main.py (Created by Marcus):
 This is the GUI and questionnaire allowing the user to answer questions and learn if they are a victim of a WMD. The questionnaire is when the user presses the Start button. When the user presses the Learn More button it takes the user to the learn more page where you can read about what a WMD is and has a link to a PDF file of the book Weapons of Math Destruction by Cathy O’neil.
-LearnMore.txt:
+LearnMore.txt (Updated by Riley):
 This is the text file where you can learn more about what a WMD is.
 
 Citations:
