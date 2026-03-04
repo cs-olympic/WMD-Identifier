@@ -16,9 +16,9 @@ Download both the LearnMore.txt and Main.py files from this repository. Next ope
 
 Table of files including:
 Main.py:
-This is the GUI and questionnaire allowing the 
+This is the GUI and questionnaire allowing the user to answer questions and learn if they are a victim of a WMD. The questionnaire is when the user presses the Start button. When the user presses the Learn More button it takes the user to the learn more page where you can read about what a WMD is and has a link to a PDF file of the book Weapons of Math Destruction by Cathy O’neil.
 LearnMore.txt:
-This is the text file where you can learn more about what a WMD is and has a link to a PDF file of the book Weapons of Math Destruction by Cathy O’neil.
+This is the text file where you can learn more about what a WMD is.
 
 Citations:
 O’Neil, Cathy. Weapons of Math Destruction: How Big Data Increases Inequality and Threatens Democracy. Random House UK, 2022.
