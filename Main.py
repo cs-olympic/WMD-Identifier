@@ -70,7 +70,7 @@ def StartScreen():
 """ This question asks the user how much they think they know about how their data is being used,
 this question sees how opaque the algorithim is. """
 def Question1():
-    BackAndNext(StartScreen, StartScreen)
+    BackAndNext(StartScreen, Question2)
 
     # Question
     question = tkinter.Label(
@@ -84,6 +84,31 @@ def Question1():
     optionsText = ["Everything", "Some Things", "Very Little", "Nothing"]
     state = tkinter.IntVar(value=1)
     for i in range(4):
+        options.append(tkinter.Radiobutton(
+            window,
+            text=optionsText[i],
+            variable=state,
+            value=i,
+            font=(font, 20)))
+        options[i].pack(pady=padding)
+
+""" This question asks the user if the insurence company has informed them about how their model
+works, this question also determines opaqueness. """
+def Question2():
+    BackAndNext(Question1, StartScreen)
+
+    # Question
+    question = tkinter.Label(
+        window,
+        text="Has the insurance company told\nyou how their model works?",
+        font=(font, 30))
+    question.pack(pady=padding)
+
+    # Options
+    options = []
+    optionsText = ["Yes", "Yes, but I think they lied", "No"]
+    state = tkinter.IntVar(value=1)
+    for i in range(3):
         options.append(tkinter.Radiobutton(
             window,
             text=optionsText[i],
