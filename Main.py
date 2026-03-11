@@ -83,7 +83,7 @@ def Question1():
     options = []
     optionsText = ["Everything", "Some Things", "Very Little", "Nothing"]
     state = tkinter.IntVar(value=1)
-    for i in range(4):
+    for i in range(len(optionsText)):
         options.append(tkinter.Radiobutton(
             window,
             text=optionsText[i],
@@ -95,7 +95,7 @@ def Question1():
 """ This question asks the user if the insurence company has informed them about how their model
 works, this question also determines opaqueness. """
 def Question2():
-    BackAndNext(Question1, StartScreen)
+    BackAndNext(Question1, Question3)
 
     # Question
     question = tkinter.Label(
@@ -108,12 +108,42 @@ def Question2():
     options = []
     optionsText = ["Yes", "Yes, but I think they lied", "No"]
     state = tkinter.IntVar(value=1)
-    for i in range(3):
+    for i in range(len(optionsText)):
         options.append(tkinter.Radiobutton(
             window,
             text=optionsText[i],
             variable=state,
             value=i,
+            font=(font, 20)))
+        options[i].pack(pady=padding)
+
+# This question asks the user if they have given information that can be used to discriminate.
+def Question3():
+    BackAndNext(Question2, StartScreen)
+
+    # Question
+    question = tkinter.Label(
+        window,
+        text="Which of these have you\nbeen asked to provide data for?",
+        font=(font, 30))
+    question.pack(pady=padding)
+
+    """ There is definetly way more factor that can be used to discriminate, but these are the ones
+    I can think of right now, this is why I changed the for loop from a hardcoded value, to
+    something that changes as the list changes. """
+    # Options
+    options = []
+    optionsText = [
+        "Your race",
+        "Your ethnitity",
+        "Your financial status",
+        "Your religion",
+        "Your politics"]
+    for i in range(len(optionsText)):
+        options.append(tkinter.Checkbutton(
+            window,
+            text=optionsText[i],
+            var=tkinter.BooleanVar(),
             font=(font, 20)))
         options[i].pack(pady=padding)
 
@@ -148,6 +178,9 @@ def MultipleChoice2():
     question = tkinter.Label(window, text="Pick an answer", font=(font, 30))
     question.pack(pady=padding)
 
+    """ There is a very stupid bug where some of the radio buttons are selected when they are
+    created, but it is random, and programing languages aren't supposed to be random like this. 
+    I have tried to fix this but I don't even know why it exists in the first place. """
     # Options
     options = []
     state = tkinter.IntVar(value=1)
