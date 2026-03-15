@@ -31,7 +31,7 @@ def BackAndNext(
         prevScreen, # The previous screen
         nextScreen, # The next screen
         questionType=None, # The type of question
-        options=None, # The option button that are apart of the screen
+        argument=None, # The option button that are apart of the screen
         changing=None): # The score that is being changed
     # Prepare a frame for the buttons
     buttonFrame = tkinter.Frame(window)
@@ -47,7 +47,7 @@ def BackAndNext(
     def next():
         # Change the dictionary of scores based on which options are selected on the current screen
         if questionType != None:
-            questionType(options, changing)
+            questionType(argument, changing)
 
         # Debugging
         print(scores)
@@ -56,7 +56,13 @@ def BackAndNext(
     nextButton = tkinter.Button(buttonFrame, text="Next", command=next, font=(font, 20), width=5)
     nextButton.pack(side=tkinter.RIGHT, padx=padding, pady=padding)
 
-# The logic that happens when the user has left a screen with a Multi Select Question
+# Logic that happens when the user has left a screen with a single select question
+def SingleSelectLogic(
+        var, # The variable that is geeting checked
+        changing): # The score that is getting changed
+    scores[changing] += var.get()
+
+# The logic that happens when the user has left a screen with a multi select question
 def MultiSelectLogic(
         options, # The list of options that are going to have their state checked
         changing): # The score that is getting changed
@@ -107,17 +113,18 @@ def Question1():
     # Options
     options = []
     optionsText = ["Everything", "Some Things", "Very Little", "Nothing"]
-    state = tkinter.IntVar(value=1)
+    optionsText.reverse()
+    var = tkinter.IntVar(value=1)
     for i in range(len(optionsText)):
         options.append(tkinter.Radiobutton(
             window,
             text=optionsText[i],
-            variable=state,
+            variable=var,
             value=i,
             font=(font, 20)))
         options[i].pack(pady=padding)
     
-    BackAndNext(StartScreen, Question2)
+    BackAndNext(StartScreen, Question2, SingleSelectLogic, var, "Opaqueness")
 
 """ This question asks the user if the insurence company has informed them about how their model
 works, this question also determines opaqueness. """
@@ -132,17 +139,17 @@ def Question2():
     # Options
     options = []
     optionsText = ["Yes", "Yes, but I think they lied", "No"]
-    state = tkinter.IntVar(value=1)
+    var = tkinter.IntVar(value=1)
     for i in range(len(optionsText)):
         options.append(tkinter.Radiobutton(
             window,
             text=optionsText[i],
-            variable=state,
+            variable=var,
             value=i,
             font=(font, 20)))
         options[i].pack(pady=padding)
     
-    BackAndNext(Question1, Question3)
+    BackAndNext(Question1, Question3, SingleSelectLogic, var, "Opaqueness")
 
 # This question asks the user if they have given information that can be used to discriminate.
 def Question3():
