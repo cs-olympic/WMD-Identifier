@@ -15,8 +15,8 @@ Since WMDs are so widespread it is important to spread awareness. This is becaus
 Download both the LearnMore.txt and Main.py files from this repository. Next open python and open the Main.py file. Make sure that LearnMore.txt and Main.py are in the same folder. Run the program and decide on if you want to learn more about WMDs or if you want to go through the questionnaire to see if you are a potential victim of a WMD.
 
 ###Sample use-cases with screenshots:
-Click Main.py to open the file
-![](Images/Click Download 1.png)
+
+![Click Main.py to open the file](Images/Click Download 1.png)
 
 Click the download button and add it to a folder.
 
