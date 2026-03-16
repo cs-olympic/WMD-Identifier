@@ -1,9 +1,7 @@
-# CS110-Green-Group
-Group project for CS110
+# WMD Identifier
+This app allows users to see if they are a potential victim of a WMD.\
+Group project for CS110\
 Members: Marcus Sharp, Riley Odell-Dee, Ryan Gronberg
-
-### WMD Identifier
-This app will allow users to Check on if they are potentially a victim of a WMD. 
 
 ### Overview:
 We wanted to spread awareness on what a WMD is and why it is important to be aware of them. Our reason for this is because there are many people who are discriminated against by WMD's, especially those who are historically underrepresented. People who live in  low income housing are also often victims of WMDs. 
