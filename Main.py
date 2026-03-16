@@ -11,12 +11,13 @@ font = "Arial"
 padding = 10
 scores = { # This scores variable will be edited with every question
     "Opaqueness" : 0, # How opaque the algorithim is
-    "Discrimitive" : 0} # How discrimitive the algorithim is
+    "Discrimitive" : 0, # How discrimitive the algorithim is
+    "Scale" : 0} # The reach of the algorithim
 
 # Window
 window = tkinter.Tk()
 window.title(title)
-window.geometry("800x500")
+window.geometry("800x550")
 
 # This function wipes the current screen, then it instatiates the next one
 def ChangeScreens(screen):
@@ -182,7 +183,40 @@ def Question3():
         options.append(option)
         option.pack(pady=padding)
     
-    BackAndNext(Question2, StartScreen, MultiSelectLogic, options, "Discrimitive")
+    BackAndNext(Question2, Question4, MultiSelectLogic, options, "Discrimitive")
+
+""" This question ask the user how large the insurence company is, this provides an estimate for the
+app's scale score. """
+def Question4():
+    # Question
+    question = tkinter.Label(
+        window,
+        text="How many people does your insurence provider serve?",
+        font=(font, 30))
+    question.pack(pady=padding)
+
+    """ These options could be better, but because I don't research insurence providers
+    professionally, these are the best I can think of. """
+    # Options
+    options = []
+    optionsText = [
+        "Less than 2,000",
+        "2,001 - 10,000",
+        "10,001 - 100,000",
+        "100,001 - 1 million",
+        "1 million - 10 million",
+        "More than 10 million"]
+    var = tkinter.IntVar(value=1)
+    for i in range(len(optionsText)):
+        options.append(tkinter.Radiobutton(
+            window,
+            text=optionsText[i],
+            variable=var,
+            value=i,
+            font=(font, 20)))
+        options[i].pack(pady=padding)
+    
+    BackAndNext(Question3, StartScreen, SingleSelectLogic, var, "Scale")
 
 """ I've tried to make this function act as sort of a base for other screen functions, but I just
 can't figure it out. I think it would be easier if I was able to use Python classes, but I don't
