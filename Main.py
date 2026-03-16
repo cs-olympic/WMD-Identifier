@@ -58,6 +58,17 @@ def BackAndNext(
     nextButton = tkinter.Button(buttonFrame, text="Next", command=next, font=(font, 20), width=5)
     nextButton.pack(side=tkinter.RIGHT, padx=padding, pady=padding)
 
+def LearnMoreButton(anchor):
+    def learnMore():
+        ChangeScreens(LearnMoreScreen)
+    lmButton = tkinter.Button(
+        window,
+        text="Learn More",
+        command=learnMore,
+        font=(font, 40),
+        width=10,)
+    lmButton.pack(pady=padding, anchor=anchor)
+
 # Logic that happens when the user has left a screen with a single select question
 def SingleSelectLogic(
         var, # The variable that is geeting checked
@@ -91,16 +102,7 @@ def StartScreen():
         width=7) # Width overrides the font size's set width
     startButton.pack(pady=padding)
 
-    # Learn More button
-    def learnMore():
-        ChangeScreens(LearnMoreScreen)
-    lmButton = tkinter.Button(
-        window,
-        text="Learn More",
-        command=learnMore,
-        font=(font, 40),
-        width=10)
-    lmButton.pack(pady=padding)
+    LearnMoreButton(anchor="n")
 
 """ This question asks the user how much they think they know about how their data is being used,
 this question sees how opaque the algorithim is. """
@@ -219,6 +221,7 @@ def Question4():
     
     BackAndNext(Question3, Question5, SingleSelectLogic, var, "Scale")
 
+# This question asks the user if their insurence rates are high.
 def Question5():
     # Question
     question = tkinter.Label(
@@ -243,7 +246,7 @@ def Question5():
             font=(font, 20)))
         options[i].pack(pady=padding)
     
-    BackAndNext(Question4, StartScreen, SingleSelectLogic, var, "Harmfulness")
+    BackAndNext(Question4, Summary, SingleSelectLogic, var, "Harmfulness")
 
 """ I've tried to make this function act as sort of a base for other screen functions, but I just
 can't figure it out. I think it would be easier if I was able to use Python classes, but I don't
@@ -292,6 +295,27 @@ def SingleSelect():
         options[i].pack(pady=padding)
     
     BackAndNext(MultiSelect, StartScreen)
+
+def Summary():
+    message = ""
+
+    # Screen Logic
+    totalMaxScore = 18
+    finalScore = 0
+    for key, value in scores.items():
+        finalScore += value
+    if finalScore >= (totalMaxScore / 4) * 3:
+        message = "You ARE being\naffected by a WMD"
+    elif finalScore >= (totalMaxScore / 4) * 2:
+        message = "You might be\naffected by a WMD,\nbut you will need\nto do more research"
+    else:
+        message = "You are NOT being\naffected by a WMD"
+    
+    # Label that give the user the result of the questionare
+    messageLabel = tkinter.Label(window, text=message, font=(font, 50))
+    messageLabel.pack(pady=50)
+
+    LearnMoreButton("s")
 
 def LearnMoreScreen():
     # Scrolling Text Box
