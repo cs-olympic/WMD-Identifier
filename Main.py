@@ -1,3 +1,10 @@
+""" In this file, there used to be a MultiSelect function and a SingleSelect function that were
+meant to be base functions for the question functions, but I couldn't figure that out. There is
+also a bug that makes it so that one of the radio buttons in a single select question is
+automaticly selected, I also can't figure that one out. Lastly, there is plenty of spelling
+mistakes in the comments. I was hoping to make for questions and more screens for this projects,
+but time didn't allow for them. """
+
 # Tkinter
 import tkinter
 from tkinter.scrolledtext import ScrolledText
@@ -98,8 +105,8 @@ def StartScreen():
         window,
         text="Start",
         command=start,
-        font=(font, 40), # The font size affects the width and height of the button
-        width=7) # Width overrides the font size's set width
+        font=(font, 40),
+        width=7)
     startButton.pack(pady=padding)
 
     LearnMoreButton(anchor="n")
@@ -247,54 +254,6 @@ def Question5():
         options[i].pack(pady=padding)
     
     BackAndNext(Question4, Summary, SingleSelectLogic, var, "Harmfulness")
-
-""" I've tried to make this function act as sort of a base for other screen functions, but I just
-can't figure it out. I think it would be easier if I was able to use Python classes, but I don't
-know. """
-""" Showcases a screen that displays a multiple choice question where the user can pick multiple
-answers """
-def MultiSelect():
-    # Question
-    question = tkinter.Label(window, text="Pick your answers", font=(font, 30))
-    question.pack(pady=padding)
-
-    # Options
-    options = []
-    for i in range(4):
-        var = tkinter.BooleanVar()
-        option = tkinter.Checkbutton(
-            window,
-            text="Option #"+str(i + 1),
-            variable=var,
-            font=(font, 20))
-        option.var = var
-        options.append(option)
-        option.pack(pady=padding)
-    
-    BackAndNext(StartScreen, SingleSelect)
-
-# Showcases a screen that displays a multiple choice question where the user only picks one answer
-def SingleSelect():
-    # Question
-    question = tkinter.Label(window, text="Pick an answer", font=(font, 30))
-    question.pack(pady=padding)
-
-    """ There is a very stupid bug where some of the radio buttons are selected when they are
-    created, but it is random, and programing languages aren't supposed to be random like this. 
-    I have tried to fix this but I don't even know why it exists in the first place. """
-    # Options
-    options = []
-    state = tkinter.IntVar(value=1)
-    for i in range(4):
-        options.append(tkinter.Radiobutton(
-            window,
-            text="Option "+str(i+1),
-            variable=state,
-            value=i,
-            font=(font, 20)))
-        options[i].pack(pady=padding)
-    
-    BackAndNext(MultiSelect, StartScreen)
 
 def Summary():
     message = ""
